@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUCA — Sauna & Ijsbaden in Amsterdam</title>
+  <meta name="description" content="De bestemming in Amsterdam waar gezondheid en gezelligheid samenkomen. Sauna, ijsbaden, coworking, kunst en een heerlijke bar.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/66c871012fadf21fdc5baac3/666635eb-b615-4931-9519-f4b4ee2f1f40/Logo+PNG+LUCA+Amsterdam.png" type="image/png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,700;1,300;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Marcellus:ital,wght@0,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ============================================
+       LUCA AMSTERDAM — CSS VARIABLES & RESET
+    ============================================ */
+    :root {
+      --luca-bg: #F6F3EC;
+      --luca-cream: #ECE4DA;
+      --luca-tan: #B9A590;
+      --luca-brown: #574C3F;
+      --luca-dark: #36302A;
+      --luca-white: #FFFFFF;
+      
+      --font-display: 'Cormorant', Georgia, serif;
+      --font-body: 'PT Serif', Times New Roman, serif;
+      --font-brand: 'Marcellus', Georgia, serif;
+      
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 8rem;
+      --space-xxl: 12rem;
+      
+      --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.2s ease;
+    }
+    
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background-color: var(--luca-bg);
+      color: var(--luca-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    
+    img {
+      display: block;
+      max-width: 100%;
+    }
+    
+    /* ============================================
+       ANNOUNCEMENT BAR
+    ============================================ */
+    .announcement-bar {
+      background-color: var(--luca-dark);
+      color: var(--luca-white);
+      padding: var(--space-sm) var(--space-md);
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 1001;
+    }
+    
+    .announcement-bar .star {
+      color: var(--luca-tan);
+      font-weight: 700;
+    }
+    
+    .announcement-bar a {
+      color: var(--luca-white);
+      text-decoration: none;
+      margin-left: var(--space-sm);
+      opacity: 0.8;
+      transition: var(--transition-fast);
+    }
+    
+    .announcement-bar a:hover {
+      opacity: 1;
+    }
+    
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: var(--space-md) var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(246, 243, 236, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(181, 165, 144, 0.2);
+      transition: var(--transition-smooth);
+    }
+    
+    .navbar.scrolled {
+      padding: var(--space-sm) var(--space-lg);
+      background: rgba(246, 243, 236, 0.95);
+    }
+    
+    .navbar__logo {
+      font-family: var(--font-brand);
+      font-size: 2rem;
+      color: var(--luca-dark);
+      text-decoration: none;
+      letter-spacing: 0.15em;
+      transition: var(--transition-fast);
+    }
+    
+    .navbar__logo:hover {
+      color: var(--luca-brown);
+    }
+    
+    .navbar__links {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+      align-items: center;
+    }
+    
+    .navbar__links a {
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      color: var(--luca-dark);
+      text-decoration: none;
+      position: relative;
+      transition: var(--transition-fast);
+    }
+    
+    .navbar__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--luca-tan);
+      transition: var(--transition-smooth);
+    }
+    
+    .navbar__links a:hover::after {
+      width: 100%;
+    }
+    
+    .navbar__links a:hover {
+      color: var(--luca-brown);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: var(--space-sm) var(--space-md);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      letter-spacing: 0.03em;
+    }
+    
+    .btn--primary {
+      background-color: var(--luca-dark);
+      color: var(--luca-bg);
+    }
+    
+    .btn--primary:hover {
+      background-color: var(--luca-brown);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(54, 48, 42, 0.15);
+    }
+    
+    .btn--outline {
+      background: transparent;
+      color: var(--luca-dark);
+      border: 1px solid var(--luca-dark);
+    }
+    
+    .btn--outline:hover {
+      background: var(--luca-dark);
+      color: var(--luca-bg);
+    }
+    
+    .btn--tan {
+      background-color: var(--luca-tan);
+      color: var(--luca-white);
+    }
+    
+    .btn--tan:hover {
+      background-color: var(--luca-brown);
+    }
+    
+    /* Mobile Menu Toggle */
+    .navbar__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: var(--space-xs);
+      background: none;
+      border: none;
+    }
+    
+    .navbar__toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--luca-dark);
+      transition: var(--transition-fast);
+    }
+    
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: var(--luca-bg);
+    }
+    
+    .hero__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    
+    .hero__gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(246, 243, 236, 0.92) 0%,
+        rgba(236, 228, 218, 0.85) 50%,
+        rgba(246, 243, 236, 0.92) 100%
+      );
+      z-index: 2;
+    }
+    
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 var(--space-md);
+    }
+    
+    .hero__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+    
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--luca-dark);
+      margin-bottom: var(--space-md);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease 0.5s forwards;
+    }
+    
+    .hero__title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    
+    .hero__subtitle {
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      color: var(--luca-brown);
+      max-width: 600px;
+      margin: 0 auto var(--space-lg);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease 0.7s forwards;
+    }
+    
+    .hero__ctas {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease 0.9s forwards;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero__scroll-indicator {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--luca-tan);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    .hero__scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--luca-tan), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.5; transform: scaleY(0.8); }
+    }
+    
+    /* ============================================
+       SECTION STYLES (Global)
+    ============================================ */
+    .section {
+      padding: var(--space-xxl) var(--space-lg);
+    }
+    
+    .section--cream {
+      background-color: var(--luca-cream);
+    }
+    
+    .section__header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+    }
+    
+    .section__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .section__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--luca-dark);
+      line-height: 1.2;
+    }
+    
+    .section__title em {
+      font-style: italic;
+    }
+    
+    .section__subtitle {
+      font-size: 1.0625rem;
+      color: var(--luca-brown);
+      margin-top: var(--space-md);
+      line-height: 1.8;
+    }
+    
+    /* Fade-in animation for scroll */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* ============================================
+       SAUNA & IJSBADEN SECTION
+    ============================================ */
+    .sauna {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    
+    .sauna__image {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    
+    .sauna__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .sauna__image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .sauna__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--luca-tan);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
+    .sauna__content {
+      padding: var(--space-lg) 0;
+    }
+    
+    .sauna__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+    }
+    
+    .sauna__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--luca-dark);
+      line-height: 1.25;
+      margin-bottom: var(--space-md);
+    }
+    
+    .sauna__title em {
+      font-style: italic;
+    }
+    
+    .sauna__text {
+      font-size: 1.0625rem;
+      color: var(--luca-brown);
+      line-height: 1.85;
+      margin-bottom: var(--space-lg);
+    }
+    
+    .sauna__features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    
+    .feature__icon {
+      width: 40px;
+      height: 40px;
+      background: var(--luca-cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--luca-tan);
+    }
+    
+    .feature__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--luca-tan);
+    }
+    
+    .feature__text {
+      font-size: 0.9375rem;
+      color: var(--luca-dark);
+      padding-top: 0.5rem;
+    }
+    
+    /* ============================================
+       COWORKING SECTION
+    ============================================ */
+    .coworking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    
+    .coworking--reversed {
+      direction: rtl;
+    }
+    
+    .coworking--reversed > * {
+      direction: ltr;
+    }
+    
+    .coworking__image {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    
+    .coworking__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .coworking__image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .coworking__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--luca-tan);
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    
+    .coworking__badge {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      background: var(--luca-bg);
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--luca-tan);
+    }
+    
+    .coworking__content {
+      padding: var(--space-lg) 0;
+      max-width: 500px;
+    }
+    
+    .coworking__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+    }
+    
+    .coworking__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--luca-dark);
+      line-height: 1.25;
+      margin-bottom: var(--space-md);
+    }
+    
+    .coworking__title em {
+      font-style: italic;
+    }
+    
+    .coworking__text {
+      font-size: 1.0625rem;
+      color: var(--luca-brown);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    
+    .coworking__amenities {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    .coworking__amenities li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.9375rem;
+      color: var(--luca-dark);
+    }
+    
+    .coworking__amenities li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--luca-tan);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    
+    /* ============================================
+       KUNST SECTION
+    ============================================ */
+    .kunst {
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .kunst__intro {
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+    }
+    
+    .kunst__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--luca-dark);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+    
+    .kunst__title em {
+      font-style: italic;
+    }
+    
+    .kunst__text {
+      font-size: 1.125rem;
+      color: var(--luca-brown);
+      line-height: 1.85;
+    }
+    
+    .kunst__gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+    }
+    
+    .artwork {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    
+    .artwork img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .artwork:hover img {
+      transform: scale(1.05);
+    }
+    
+    .artwork__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(54, 48, 42, 0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-md);
+    }
+    
+    .artwork:hover .artwork__overlay {
+      opacity: 1;
+    }
+    
+    .artwork__title {
+      color: var(--luca-white);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-style: italic;
+    }
+    
+    .kunst__cta {
+      margin-top: var(--space-xl);
+    }
+    
+    /* ============================================
+       BAR SECTION
+    ============================================ */
+    .bar {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    
+    .bar__image {
+      position: relative;
+      aspect-ratio: 5/4;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    
+    .bar__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    
+    .bar__image:hover img {
+      transform: scale(1.03);
+    }
+    
+    .bar__content {
+      padding: var(--space-lg) 0;
+      max-width: 480px;
+    }
+    
+    .bar__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+    }
+    
+    .bar__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--luca-dark);
+      line-height: 1.25;
+      margin-bottom: var(--space-md);
+    }
+    
+    .bar__title em {
+      font-style: italic;
+    }
+    
+    .bar__text {
+      font-size: 1.0625rem;
+      color: var(--luca-brown);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    
+    .bar__menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      margin-top: var(--space-lg);
+    }
+    
+    .menu-item {
+      padding: var(--space-sm);
+      background: var(--luca-cream);
+      border-radius: 2px;
+      font-size: 0.9375rem;
+    }
+    
+    .menu-item__name {
+      color: var(--luca-dark);
+      font-weight: 400;
+    }
+    
+    .menu-item__desc {
+      font-size: 0.8125rem;
+      color: var(--luca-tan);
+      font-style: italic;
+    }
+    
+    /* ============================================
+       EVENTS STRIP
+    ============================================ */
+    .events-strip {
+      background: linear-gradient(135deg, var(--luca-dark) 0%, var(--luca-brown) 100%);
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .events-strip::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(181, 165, 144, 0.1) 0%, transparent 50%);
+      animation: subtleFloat 15s ease-in-out infinite;
+    }
+    
+    @keyframes subtleFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(2%, 2%); }
+    }
+    
+    .events-strip__content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .events-strip__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+    }
+    
+    .events-strip__title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--luca-white);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+    
+    .events-strip__title em {
+      font-style: italic;
+      color: var(--luca-tan);
+    }
+    
+    .events-strip__subtitle {
+      font-family: var(--font-body);
+      font-size: 1.0625rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: var(--space-lg);
+    }
+    
+    .events-strip__cta {
+      display: inline-block;
+      padding: var(--space-sm) var(--space-lg);
+      background: var(--luca-tan);
+      color: var(--luca-white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: var(--transition-smooth);
+    }
+    
+    .events-strip__cta:hover {
+      background: var(--luca-white);
+      color: var(--luca-dark);
+      transform: translateY(-2px);
+    }
+    
+    /* ============================================
+       BOOKING CTA SECTION
+    ============================================ */
+    .booking-cta {
+      background: var(--luca-tan);
+      padding: var(--space-xxl) var(--space-lg);
+      text-align: center;
+      position: relative;
+    }
+    
+    .booking-cta__bg-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.05;
+      background-image: 
+        radial-gradient(circle at 25% 25%, var(--luca-dark) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, var(--luca-dark) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    
+    .booking-cta__content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .booking-cta__eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--luca-white);
+      opacity: 0.8;
+      margin-bottom: var(--space-md);
+    }
+    
+    .booking-cta__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--luca-white);
+      line-height: 1.15;
+      margin-bottom: var(--space-md);
+    }
+    
+    .booking-cta__title em {
+      font-style: italic;
+    }
+    
+    .booking-cta__subtitle {
+      font-size: 1.125rem;
+      color: var(--luca-white);
+      opacity: 0.9;
+      max-width: 550px;
+      margin: 0 auto var(--space-lg);
+    }
+    
+    .booking-cta__btn {
+      display: inline-block;
+      padding: var(--space-md) var(--space-xl);
+      background: var(--luca-white);
+      color: var(--luca-dark);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      border: 2px solid var(--luca-white);
+    }
+    
+    .booking-cta__btn:hover {
+      background: transparent;
+      color: var(--luca-white);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* ============================================
+       FOOTER
+    ============================================ */
+    .footer {
+      background: var(--luca-cream);
+      padding: var(--space-xl) var(--space-lg);
+      border-top: 1px solid rgba(181, 165, 144, 0.2);
+    }
+    
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .footer__brand {
+      max-width: 320px;
+    }
+    
+    .footer__logo {
+      font-family: var(--font-brand);
+      font-size: 2rem;
+      color: var(--luca-dark);
+      letter-spacing: 0.15em;
+      margin-bottom: var(--space-md);
+    }
+    
+    .footer__tagline {
+      font-size: 0.9375rem;
+      color: var(--luca-brown);
+      line-height: 1.7;
+      font-style: italic;
+    }
+    
+    .footer__col h4 {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--luca-tan);
+      margin-bottom: var(--space-md);
+    }
+    
+    .footer__col ul {
+      list-style: none;
+    }
+    
+    .footer__col li {
+      margin-bottom: var(--space-sm);
+    }
+    
+    .footer__col a {
+      font-size: 0.9375rem;
+      color: var(--luca-dark);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+    
+    .footer__col a:hover {
+      color: var(--luca-tan);
+    }
+    
+    .footer__contact-item {
+      font-size: 0.9375rem;
+      color: var(--luca-dark);
+      margin-bottom: var(--space-sm);
+    }
+    
+    .footer__contact-item a {
+      color: var(--luca-dark);
+      text-decoration: none;
+    }
+    
+    .footer__contact-item a:hover {
+      color: var(--luca-tan);
+    }
+    
+    .footer__social {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    
+    .footer__social a {
+      width: 40px;
+      height: 40px;
+      background: var(--luca-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--luca-dark);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+    
+    .footer__social a:hover {
+      background: var(--luca-tan);
+      color: var(--luca-white);
+      transform: translateY(-3px);
+    }
+    
+    .footer__social svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .footer__bottom {
+      max-width: 1400px;
+      margin: var(--space-xl) auto 0;
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(181, 165, 144, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer__copyright {
+      font-size: 0.8125rem;
+      color: var(--luca-brown);
+    }
+    
+    .footer__legal {
+      display: flex;
+      gap: var(--space-md);
+    }
+    
+    .footer__legal a {
+      font-size: 0.8125rem;
+      color: var(--luca-brown);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+    
+    .footer__legal a:hover {
+      color: var(--luca-tan);
+    }
+    
+    /* ============================================
+       RESPONSIVE STYLES
+    ============================================ */
+    @media (max-width: 1024px) {
+      .navbar__links {
+        display: none;
+      }
+      
+      .navbar__toggle {
+        display: flex;
+      }
+      
+      .sauna,
+      .coworking,
+      .bar {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      
+      .coworking--reversed {
+        direction: ltr;
+      }
+      
+      .kunst__gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .footer__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section {
+        padding: var(--space-xl) var(--space-md);
+      }
+      
+      .hero__title {
+        font-size: 2.5rem;
+      }
+      
+      .sauna__features,
+      .bar__menu {
+        grid-template-columns: 1fr;
+      }
+      
+      .kunst__gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-md);
+        text-align: center;
+      }
+      
+      .footer__legal {
+        justify-content: center;
+      }
+    }
+    
+    /* ============================================
+       MOBILE MENU
+    ============================================ */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--luca-bg);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-lg);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-smooth);
+    }
+    
+    .mobile-menu.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .mobile-menu__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      cursor: pointer;
+      color: var(--luca-dark);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      padding: var(--space-xs);
+      line-height: 1;
+    }
+    
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--luca-dark);
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+    
+    .mobile-menu a:hover {
+      color: var(--luca-tan);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span class="star">--</span> Elke 3e donderdag van de maand -- Ladies Only vanaf 17:00
+    <a href="#events">Meer informatie</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="navbar__logo">LUCA</a>
+    
+    <ul class="navbar__links">
+      <li><a href="#sauna">Sauna</a></li>
+      <li><a href="#coworking">Coworking</a></li>
+      <li><a href="#kunst">Kunst</a></li>
+      <li><a href="#bar">Bar</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="btn btn--primary">Boek nu</a></li>
+    </ul>
+    
+    <button class="navbar__toggle" id="menuToggle" aria-label="Menu openen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Menu sluiten">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <a href="#sauna">Sauna & Ijsbaden</a>
+    <a href="#coworking">Coworking</a>
+    <a href="#kunst">Kunst</a>
+    <a href="#bar">Bar</a>
+    <a href="#events">Events</a>
+    <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="btn btn--primary">Boek nu</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80" alt="LUCA Amsterdam wellness ruimte met uitzicht op het water">
+    </div>
+    <div class="hero__gradient"></div>
+    
+    <div class="hero__content">
+      <p class="hero__eyebrow">Sauna & Ijsbaden in Amsterdam</p>
+      <h1 class="hero__title">Waar gezondheid en gezelligheid <em>samenkomen</em></h1>
+      <p class="hero__subtitle">Ontdek de perfecte balans tussen wellness, werk en kunst in het hart van Amsterdam. LUCA is meer dan een sauna -- het is jouw thuis aan het water.</p>
+      <div class="hero__ctas">
+        <a href="#sauna" class="btn btn--primary">Ontdek LUCA</a>
+        <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="btn btn--outline">Boek nu</a>
+      </div>
+    </div>
+    
+    <div class="hero__scroll-indicator">
+      <span>Ontdek</span>
+    </div>
+  </section>
+
+  <!-- Sauna & Ijsbaden Section -->
+  <section class="section fade-in-section" id="sauna">
+    <div class="sauna">
+      <div class="sauna__image">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=900&q=80" alt="Traditionele sauna bij LUCA Amsterdam" loading="lazy">
+      </div>
+      <div class="sauna__content">
+        <p class="sauna__eyebrow">Wellness</p>
+        <h2 class="sauna__title">Sauna & <em>Ijsbaden</em></h2>
+        <p class="sauna__text">Laat de dagelijkse stress los en dompel je onder in onze traditionele sauna-ervaring. Van de klassieke Finse sauna tot de verfrissende koude duik -- wij bieden de perfecte rituelen voor lichaam en geest. Onze faciliteiten zijn ontworpen voor volledige ontspanning.</p>
+        
+        <div class="sauna__features">
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zm2 15H10v-1h4v1zm0-2H10v-1h4v1zm-1.5-3.5V14h-1v-2.5H9.5l.5-1.5h2l.5 1.5zm3.5 3.5h-4v-1h4v1z"/></svg>
+            </div>
+            <span class="feature__text">Traditionele sauna's</span>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 3.17 2.11 5.85 5 6.71V22h4v-6.29c2.89-.86 5-3.54 5-6.71 0-3.87-3.13-7-7-7z"/></svg>
+            </div>
+            <span class="feature__text">Ijsbaden</span>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 4c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8m0-2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </div>
+            <span class="feature__text">Stoombad</span>
+          </div>
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+            </div>
+            <span class="feature__text">Massages</span>
+          </div>
+        </div>
+        
+        <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="btn btn--primary">Boek je sessie</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coworking Section -->
+  <section class="section section--cream fade-in-section" id="coworking">
+    <div class="coworking coworking--reversed">
+      <div class="coworking__image">
+        <span class="coworking__badge">Binnenkort</span>
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80" alt="Coworking ruimte bij LUCA Amsterdam" loading="lazy">
+      </div>
+      <div class="coworking__content">
+        <p class="coworking__eyebrow">Werk</p>
+        <h2 class="coworking__title">Coworking & <em>Inspiratie</em></h2>
+        <p class="coworking__text">Werk in een inspirerende omgeving met uitzicht op het water. Onze coworking spaces combineren rust en creativiteit -- de perfecte plek voor gefocust werk of een snelle vergadering na je sauna-sessie.</p>
+        
+        <ul class="coworking__amenities">
+          <li>Flexibele werkplekken</li>
+          <li>Snelle wifi</li>
+          <li>Koffie & thee inbegrepen</li>
+          <li>Vergaderruimtes</li>
+          <li>Toegang tot wellness-faciliteiten</li>
+        </ul>
+        
+        <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="btn btn--primary">Vraag informatie aan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kunst Section -->
+  <section class="section fade-in-section" id="kunst">
+    <div class="kunst">
+      <div class="kunst__intro">
+        <p class="section__eyebrow">Cultuur</p>
+        <h2 class="kunst__title">Kunst & <em>Marc Corne</em></h2>
+        <p class="kunst__text">LUCA is meer dan wellness -- het is een culturele ervaring. De kunstwerken van Marc Corne creeren een inspirerende sfeer die jouw bezoek naar iets waars verheft. Elke ruimte is zorgvuldig samengesteld om jou te inspireren.</p>
+      </div>
+      
+      <div class="kunst__gallery">
+        <div class="artwork">
+          <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=700&q=80" alt="Abstract kunstwerk van Marc Corne bij LUCA Amsterdam" loading="lazy">
+          <div class="artwork__overlay">
+            <span class="artwork__title">Rust</span>
+          </div>
+        </div>
+        <div class="artwork">
+          <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=700&q=80" alt="Moderne kunst bij LUCA Amsterdam" loading="lazy">
+          <div class="artwork__overlay">
+            <span class="artwork__title">Evenwicht</span>
+          </div>
+        </div>
+        <div class="artwork">
+          <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=700&q=80" alt="Kunstinstallatie bij LUCA Amsterdam" loading="lazy">
+          <div class="artwork__overlay">
+            <span class="artwork__title">Harmonie</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="kunst__cta">
+        <a href="https://instagram.com/amsterdam.luca" class="btn btn--outline" target="_blank" rel="noopener">Ontdek de collectie</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bar Section -->
+  <section class="section section--cream fade-in-section" id="bar">
+    <div class="bar">
+      <div class="bar__image">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=900&q=80" alt="Bar en smoothie bij LUCA Amsterdam" loading="lazy">
+      </div>
+      <div class="bar__content">
+        <p class="bar__eyebrow">Ontspanning</p>
+        <h2 class="bar__title">Bar & <em>Juice</em></h2>
+        <p class="bar__text">Geniet van een verfrissende sap, een verwarmende thee of een heerlijke smoothie na je sauna-ervaring. Onze bar is de perfecte plek om te ontspannen en te genieten van het uitzicht op het water.</p>
+        
+        <div class="bar__menu">
+          <div class="menu-item">
+            <span class="menu-item__name">Verse sapjes</span>
+            <span class="menu-item__desc">Seizoensgebonden</span>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item__name">Smoothies</span>
+            <span class="menu-item__desc">Eiwitrijk & verfrissend</span>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item__name">Therapie thee</span>
+            <span class="menu-item__desc">Kruiden & rust</span>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item__name">Gezonde snacks</span>
+            <span class="menu-item__desc">Kleine lekkernijen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Strip -->
+  <section class="events-strip fade-in-section" id="events">
+    <div class="events-strip__content">
+      <p class="events-strip__eyebrow">Maandelijks evenement</p>
+      <h2 class="events-strip__title">Elke 3e donderdag -- <em>Ladies Only</em></h2>
+      <p class="events-strip__subtitle">Vrouwen welkom vanaf 17:00 voor een speciale avond vol wellness, sociale vibes en ontspanning. Exclusief voor dames, in een warme en gezellige sfeer.</p>
+      <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="events-strip__cta">Boek je plek</a>
+    </div>
+  </section>
+
+  <!-- Booking CTA Section -->
+  <section class="booking-cta fade-in-section" id="contact">
+    <div class="booking-cta__bg-pattern"></div>
+    <div class="booking-cta__content">
+      <p class="booking-cta__eyebrow">Reserveer nu</p>
+      <h2 class="booking-cta__title">Je wellness-ervaring <em>wacht</em></h2>
+      <p class="booking-cta__subtitle">Boek nu je sessie en ervaar zelf waarom LUCA de perfecte bestemming is voor jouw moment van rust en herstel.</p>
+      <a href="https://beheerapp.onlineafspraken.nl/book/cglh59mgwd36-agdz10/1cb4467e-7529-42a0-abf0-93c1e36a7a95/standalone" class="booking-cta__btn">Boek nu</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo">LUCA</div>
+        <p class="footer__tagline">De bestemming in Amsterdam waar gezondheid en gezelligheid samenkomen.</p>
+        
+        <div class="footer__social">
+          <a href="https://instagram.com/amsterdam.luca" target="_blank" rel="noopener" aria-label="Volg ons op Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com/profile.php?id=61565666261597" target="_blank" rel="noopener" aria-label="Volg ons op Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer__col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="#sauna">Sauna & Ijsbaden</a></li>
+          <li><a href="#coworking">Coworking</a></li>
+          <li><a href="#kunst">Kunst</a></li>
+          <li><a href="#bar">Bar</a></li>
+          <li><a href="#events">Events</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p class="footer__contact-item">
+          <a href="tel:+31643711310">+31 6 43711310</a>
+        </p>
+        <p class="footer__contact-item">
+          <a href="mailto:info@luca-amsterdam.nl">info@luca-amsterdam.nl</a>
+        </p>
+        <p class="footer__contact-item">
+          Amsterdam, Nederland
+        </p>
+      </div>
+      
+      <div class="footer__col">
+        <h4>Openingstijden</h4>
+        <p class="footer__contact-item">Ma -- Za: 10:00 -- 22:00</p>
+        <p class="footer__contact-item">Zo: 11:00 -- 20:00</p>
+        <p class="footer__contact-item" style="margin-top: 1rem; font-style: italic; color: var(--luca-tan);">Ladies Only: elke 3e do 17:00+</p>
+      </div>
+    </div>
+    
+    <div class="footer__bottom">
+      <p class="footer__copyright">2026 LUCA Amsterdam. Alle rechten voorbehouden.</p>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Voorwaarden</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ============================================
+    // NAVIGATION SCROLL EFFECT
+    // ============================================
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // ============================================
+    // MOBILE MENU
+    // ============================================
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuClose = document.getElementById('menuClose');
+    
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    menuClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ============================================
+    // SCROLL ANIMATIONS (Fade In on Scroll)
+    // ============================================
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // ============================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // ============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
