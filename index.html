@@ -252,11 +252,15 @@
       z-index: 1;
     }
     
-    .hero__bg img {
+    .hero__bg img,
+    .hero__bg video {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      opacity: 0.6;
     }
     
     .hero__gradient {
@@ -1295,7 +1299,15 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero__bg">
-      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80" alt="LUCA Amsterdam wellness ruimte met uitzicht op het water">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80"
+      >
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3DBdcZyzncA1ABX1CaKM713SrBZ/hf_20260520_170415_5096df4d-2d22-4b0e-b27a-fe3a257e6390.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero__gradient"></div>
     
